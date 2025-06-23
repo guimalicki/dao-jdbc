@@ -12,5 +12,9 @@ public class Program2 {
         Department dp = new Department(null, "Music");
         departmentDao.insert(dp);
         System.out.println(dp);
+
+        System.out.println("=== TEST 2: Department update ===");
+        dp.setName("MusicInstruments");
+        departmentDao.update(dp);
     }
 }
