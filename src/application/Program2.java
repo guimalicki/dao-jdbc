@@ -14,7 +14,10 @@ public class Program2 {
         System.out.println(dp);
 
         System.out.println("=== TEST 2: Department update ===");
-        dp.setName("MusicInstruments");
+        dp.setName("Clothes");
         departmentDao.update(dp);
+
+        System.out.println("=== TEST 3: Department delete ===");
+        departmentDao.deleteById(5);
     }
 }

@@ -36,6 +36,9 @@ public class DepartmentDaoJDBC implements DepartmentDao {
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
+        finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
@@ -50,11 +53,32 @@ public class DepartmentDaoJDBC implements DepartmentDao {
         } catch (SQLException e) {
             throw new DbException(e.getMessage());
         }
+        finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
     public void deleteById(Integer id) {
+        PreparedStatement st = null;
 
+        try {
+            st = conn.prepareStatement("DELETE FROM department WHERE Id = ?", Statement.RETURN_GENERATED_KEYS);
+            st.setInt(1, id);
+
+            int rowsAffected = st.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("ID:" + id + " deleted!");
+            } else {
+                throw new DbException("Id not found!");
+            }
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
