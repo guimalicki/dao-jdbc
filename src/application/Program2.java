@@ -1,5 +1,6 @@
 package application;
 
+import db.DB;
 import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
 import model.entities.Department;
@@ -17,7 +18,10 @@ public class Program2 {
         dp.setName("Clothes");
         departmentDao.update(dp);
 
-        System.out.println("=== TEST 3: Department delete ===");
-        departmentDao.deleteById(5);
+        //System.out.println("=== TEST 3: Department delete ===");
+        //departmentDao.deleteById(5);
+
+        System.out.println("=== TEST 4: Department findById ===");
+        System.out.println(departmentDao.findById(7));
     }
 }
