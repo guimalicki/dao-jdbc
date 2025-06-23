@@ -23,5 +23,10 @@ public class Program2 {
 
         System.out.println("=== TEST 4: Department findById ===");
         System.out.println(departmentDao.findById(7));
+
+        System.out.println("=== TEST 5: Department findAll ===");
+        for (Department dep : departmentDao.findAll()){
+            System.out.println(dep);
+        }
     }
 }
